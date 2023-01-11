@@ -1,0 +1,322 @@
+
+
+* {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(26, 67, 137);
+  font-family: rubik;
+  color: white;
+}
+#jugar {
+  display: flex;
+  flex-direction: row;
+}
+h1 {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 40px;
+}
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+nav ul li {
+  color: black;
+  font-weight: bolder;
+  text-decoration: none;
+  background-color: whitesmoke;
+  padding: 10px;
+  border: solid 2px black;
+}
+.album {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.divCard {
+  width: 180px;
+  margin: 15px;
+  height: 300px;
+  border: 3px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #bcbbc2;
+  border-radius: 15px;
+}
+.imagenes {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  margin-bottom: 5px;
+}
+.caracteristicas {
+  width: 90%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 7px;
+}
+.caracteristicas p {
+  font-size: 14px;
+  color: chocolate;
+  font-weight: bold;
+}
+.red {
+  background-color: red;
+}
+#tipes {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 20%;
+  height: 50px;
+  position: sticky;
+  top: 10px;
+  scroll-behavior: auto;
+}
+#imagenTipoPokemon {
+  display: flex;
+  margin-top: 20px;
+}
+#imagenTipo{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 50px;
+}
+#jugar {
+  display: flex;
+  justify-content: center;
+}
+#instrucciones {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.instruccionesCont {
+  text-align: center;
+}
+#imagenTipo {
+  width: 80%;
+  height: 80%;
+  object-fit: cover;
+  object-position: center;
+}
+.zoom {
+  transform: scale(1.4);
+}
+#opcionesDeJuego {
+  width: 100%;
+  /* height: 300px; */
+  background-color: red;
+}
+#butMas {
+  display: flex;
+  width: 25px;
+  height: 25px;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+#butMenos {
+  display: flex;
+  width: 25px;
+  height: 25px;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+#imagenLabel {
+  display: flex;
+  justify-content: center;
+}
+#cajaColeccion {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+}
+#coleccionLabel {
+  display: flex;
+  justify-content: flex-start;
+}
+#numCantidad {
+  font-size: 30px;
+}
+.numCarta{
+  margin-top: 10px;
+  font-size: 26px;
+  color: brown;
+  font-weight: bolder;
+}
+
+h2{
+  display: flex;
+  color: chocolate;
+  font-weight: bolder;
+  text-align: center;
+ 
+}
+#cantidadPokemons {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  width: 300px;
+  margin-top: 20px;
+  /* border: 1px solid black; */
+}
+#contenedor2 {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+#opcionesCantidad {
+  display: flex;
+  flex-direction: column;
+}
+#opcionesDeImagen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+#opcionesCantidad div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#opcionesJuego {
+  flex-direction: column;
+  display: flex;
+  align-items: flex-start;
+  width: 50%;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+#nivelJuego {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  border-left: 2px solid black;
+}
+#btnEmpezarJugar {
+  margin-top: 30px;
+  width: 300px;
+  height: 60px;
+  font-size: 25px;
+  font-weight: bold;
+  background-color: rgb(255, 230, 0);
+}
+#opcionesDeColeccion {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-top: 10px;
+
+  /* border: 1px solid black; */
+}
+#coleccionLabel {
+  display: flex;
+  margin-right: 20px;
+}
+#coleccionTitle {
+  text-align: center;
+}
+#coleccionInput {
+  display: flex;
+  margin-right: 10px;
+}
+#opcionesDeImagen {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  /* border: 1px solid black; */
+}
+#imagenLabel {
+  display: flex;
+  width: 300px;
+}
+#imagenInput {
+  display: flex;
+}
+#indicadorNivel {
+  font-size: 50px;
+}
+#nivelJuegoEtiqueta {
+  font-size: 40px;
+}
+#nivelJuegoEtiqueta2 {
+  font-size: 40px;
+}
+.clTipoImagen {
+  width: 70%;
+  height: 700%;
+  padding: 5px;
+  margin-left: 10px;
+}
+.noSee {
+  display: none !important;
+}
+#tituloJuego {
+  font-size: 40px;
+  color: yellow;
+}
+#textoInstrucciones {
+  color: yellow;
+  font-size: 25px;
+}
+#textoInstrucciones2 {
+  color: yellow;
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+#tituloPagina {
+  color: yellow;
+  font-size: 60px;
+}
+#barraProgreso{
+  display: flex;
+  flex-direction: column;
+  padding-left: 35%;
+
+}
+
+#tituloBarraProgreso{
+  display: flex;
+  font-size: 30px;
+
+}
+meter{
+  display: flex;
+  width: 300px;
+  height: 30px;
+}
+#contenedorImagen{
+  width: 95%;
+}

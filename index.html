@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Pokedex</title>
+
+    <script src="./publicFunctions.js" type="module" defer></script>
+    <script src="./pokedex.js" type="module" defer></script>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1 id="tituloPagina">Pokedex</h1>
+      <div id="intrucciones">
+        <h5 class="instruccionesCont" id="tituloJuego">
+          ORGANIZA TUS POKÉMON
+        </h5>
+        <p class="instruccionesCont" id="textoInstrucciones">
+          Pon todos los POKÉMON con su tipo 1. Cuidado no te equivoques!!
+        </p>
+        <p class="instruccionesCont" id="textoInstrucciones2">
+          Cada vez que necesites una pista, tu puntuación bajará un 10%
+        </p>
+      </div>
+      <!-- -------------------------------------------------------------------------------------- -->
+
+      <div id="barraJuego">
+        <div id="botonJugar">
+          <h3 id="puntos"></h3>
+        </div>
+        <!-- ------------------------------------------------------------------------------------- -->
+      </div>
+      <div id="contenedor2">
+        <div id="opcionesJuego">
+          <div id="cantidadPokemons">
+            <div id="opcionesCantidad">
+              <div>
+                <h4 id="tituloOpcionesCantidad">
+                  ¿CON CUÁNTOS POKÉMON QUIERES JUGAR?
+                </h4>
+              </div>
+              <div>
+                <button type="button" id="butMas" >
+                  -
+                </button>
+
+                <h4 id="numCantidad">600</h4>
+
+                <button type="button" id="butMenos" >
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div id="cajaColeccion">
+            <h4 id="coleccionTitle">¿CON QUÉ POKÉMONS QUIERES JUGAR?</h4>
+            <div id="opcionesDeColeccion">
+              <label id="coleccionLabel">
+                <input
+                  id="coleccionInput"
+                  value="primeros"
+                  name="coleccion"
+                  type="radio"
+                  
+                  checked
+                />
+
+                LOS PRIMEROS
+              </label>
+              <label id="coleccionLabel">
+                <input
+                  id="coleccionInput"
+                  value="coleccion"
+                  name="coleccion"
+                  type="radio"
+                  
+                />
+
+                TODA LA COLECCIÓN
+              </label>
+            </div>
+          </div>
+          <div id="opcionesDeImagen">
+            <h3>¿TE ATREVES SIN VER LAS IMÁGENES?</h3>
+            <label id="imagenLabel">
+              <input
+              
+                id="imagenInput"
+                name="imagen"
+                type="checkbox"
+              />
+              NO MOSTRAR IMÁGENES
+            </label>
+          </div>
+        </div>
+        <div id="nivelJuego">
+          <h3 id="nivelJuegoEtiqueta">Nivel</h3>
+          <h5 id="indicadorNivel">1</h5>
+          <h5 id="nivelJuegoEtiqueta2">/100</h5>
+          <div>
+            <!-- ____---------- -->
+            <button
+              type="button"
+              
+              id="btnEmpezarJugar"
+              disabled
+            >
+              JUGAR
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="jugar">
+      <div id="barraProgreso">
+        <h5 id = 'tituloBarraProgreso'>Cargando tus Pokémon</h5>
+        <meter 
+        min="0"
+        max="100"
+        value=""
+        ></meter>
+    </div>
+
+     <div id="tipes" style="height: 600px; overflow: scroll"></div>
+      <!-- <progress 
+      id="barraCargar"
+      class="noSee"
+      value="" 
+      max="100">
+    </progress>  -->
+
+      <!-- </div> -->
+    </div>
+  </body>
+</html>
