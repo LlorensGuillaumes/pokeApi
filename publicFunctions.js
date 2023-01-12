@@ -1,8 +1,8 @@
 export var pokemons = []   //array con todos los Pokémon y características
-
-
-
 var numIntentos = 0;    //Numero de intentos en el juego
+
+
+
 
 let containerPokemons = document.createElement("div");
     containerPokemons.classList.add("album");
@@ -10,8 +10,8 @@ let divBarraProgreso = document.getElementById('barraProgreso')
 let barraProgreso = document.querySelector('meter')
 
 export const llenarArrayPokemons = async () => {
-    // for (let i = 554; i < 556; i++) {
-    for (let i = 1; i < 601; i++) {
+    for (let i = 1; i < 10; i++) {
+    // for (let i = 1; i < 601; i++) {
 
         const result = await fetch("https://pokeapi.co/api/v2/pokemon/" + i);
         const pokemon = await result.json();

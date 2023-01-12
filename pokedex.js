@@ -3,7 +3,10 @@ import { pokemons } from "./publicFunctions.js";
 import { llenarArrayPokemons } from "./publicFunctions.js";
 import { generarCartas } from "./publicFunctions.js";
 import { fncSeleccionarFamilia } from "./publicFunctions.js";
+var numIntentos = 0;    //Numero de intentos en el juego
+
 llenarArrayPokemons() //lleno el array con el fetch
+var puntosCartaActual 
 
 let botonMas = document.querySelector('#butMas')
 let botonMenos = document.querySelector('#butMenos')
@@ -11,12 +14,6 @@ let coleccionInput = document.querySelectorAll('#coleccionInput')
 let imagenInput = document.querySelector('#imagenInput')
 let btnEmpezarJugar = document.querySelector('#btnEmpezarJugar')
 let conImagen = document.getElementById("imagenInput") //.checked; // devuelve (true o false) según esté marcado o no
-
-//Esta funcion, se ejecutará cuando se seleccione una etiqueta familia FUNCIONA
-
-
-//Esta funcion, se ejecutará cuando se clike sobre una carta, para asignar familia FUNCIONA
-
 
 //pulsar boton MAS --> FUNCIONA
 function fnButMas() {
@@ -59,62 +56,97 @@ function fnButMenos() {
 function btnComprobarResultado(pista) {
   let contadorAcertados = 0;
   let contadorFallados = 0;
-  let cartaComprobar = document.getElementsByClassName("divCard");
+  let cartasComprobar = document.getElementsByClassName("divCard"); //todas las cartas del tablero
   let contenedor = document.getElementById("textoInstrucciones");
   let marcador = document.getElementById("puntos");
   let contador = document.getElementById("indicadorNivel");
   let contadorTexto = document.getElementById("nivelJuegoEtiqueta");
   let contadorTextoBlanco = document.getElementById("nivelJuegoEtiqueta2");
+  
+  let listadoFallados = []
 
-  calcularNivel();
+  for (const carta of cartasComprobar) {
+    let misTipos = carta.childNodes[3].className  //string con los tipos que tiene el bicho
+    let cartaFiltro = (carta.lastChild)
+    let tipoAsignado =(cartaFiltro.lastChild.className)
+    
+    if (misTipos.includes(tipoAsignado)){
+      contadorAcertados ++
+      carta.classList.remove('red')
+    }else{
+      contadorFallados ++
+      listadoFallados.push(carta)
+      carta.classList.remove('red')
+    }    
+  }
+    let puntosPosibles = puntosCartaActual * cartasComprobar.length;
+    let valorResultado = puntosCartaActual * contadorAcertados;
 
-  let datosNivel = calcularNivel();
-  let puntosPorCarta = datosNivel[0];
-  let cartasJuego = datosNivel[1];
-
-  for (i = 0; i < cartasJuego; i++) {
-    let tipoCartaPokemon = cartaComprobar[i].childNodes[3].classList[1];
-    //Aquí da el tipo real que es
-    let tipoCartaPokemonAsignada = cartaComprobar[i].childNodes[3];
-    let imagenCartaPokemonAsignada = tipoCartaPokemonAsignada.childNodes[3];
-
-    //if (imagenCartaPokemonAsignada) {
-
-    if (imagenCartaPokemonAsignada.classList.value === tipoCartaPokemon) {
-      contadorAcertados++;
-    } else {
-      if (pista === "pintar") {
-        console.log("entra");
-        imagenCartaPokemonAsignada.parentNode.classList.add("red");
+    if (pista === "pintar") {
+      console.log('entra')
+      for (let i = 1; i <= numIntentos; i++) {
+        valorResultado = Math.round(valorResultado * 0.9);
+        for (const item of listadoFallados) {
+          item.classList.add('red')
+        }
       }
-      contadorFallados++;
     }
-  }
 
-  let puntosPosibles = cartasJuego * puntosPorCarta;
-  let valorResultado = puntosPorCarta * contadorAcertados;
+    contador.textContent = valorResultado;
+    contadorTexto.textContent = "SCORE";
+    contadorTextoBlanco.textContent = "de: " + puntosPosibles + " posibles";
+    marcador.textContent = "";
 
-  if (pista === "pintar") {
-    for (let i = 1; i <= numIntentos; i++) {
-      valorResultado = valorResultado * 0.9;
-    }
-  }
+    
 
-  contador.textContent = valorResultado;
-  contadorTexto.textContent = "SCORE";
-  contadorTextoBlanco.textContent = "de: " + puntosPosibles + " posibles";
 
-  marcador.textContent = "";
+  // for (let i = 0; i < cartasJuego; i++) {
+  //   let tipoCartaPokemon = cartasJuego[i]
+  //   //Aquí da el tipo real que es
+  //   //let tipoCartaPokemonAsignada = cartaComprobar[i].childNodes[3];
+  //   //let imagenCartaPokemonAsignada = tipoCartaPokemonAsignada.childNodes[3];
+  //   console.log(tipoCartaPokemon) //Aqui tengo los valores reales
 
-  if (valorResultado === puntosPosibles) {
-    return true;
-  } else {
-    return false;
-  }
+  //   //console.log(imagenCartaPokemonAsignada.classList.value)
+  //   console.log(tipoCartaPokemon)
+  //   //if (imagenCartaPokemonAsignada) {
+
+  //   if (imagenCartaPokemonAsignada.classList.value === tipoCartaPokemon) {
+  //     contadorAcertados++;
+  //   } else {
+  //     if (pista === "pintar") {
+  //       console.log("entra");
+  //       imagenCartaPokemonAsignada.parentNode.classList.add("red");
+  //     }
+  //     contadorFallados++;
+  //   }
+  // }
+
+//   let puntosPosibles = cartasJuego * puntosPorCarta;
+//   let valorResultado = puntosPorCarta * contadorAcertados;
+
+//   if (pista === "pintar") {
+//     for (let i = 1; i <= numIntentos; i++) {
+//       valorResultado = valorResultado * 0.9;
+//     }
+//   }
+
+//   contador.textContent = valorResultado;
+//   contadorTexto.textContent = "SCORE";
+//   contadorTextoBlanco.textContent = "de: " + puntosPosibles + " posibles";
+
+//   marcador.textContent = "";
+
+//   if (valorResultado === puntosPosibles) {
+//     return true;
+//   } else {
+//     return false;
+//   }
 }
 
 //calcular NIVEL --> FUNCIONA
 function calcularNivel() {
+ 
   let cantidadMostrar = document.getElementById("numCantidad").textContent; // devuelve cantidad a mostar
   let coleccion = document.getElementById("coleccionInput").checked; // devuelve True(los primeros) y False(todos)
   let conImagen = document.getElementById("imagenInput").checked; // devuelve (true o false) según esté marcado o no
@@ -173,8 +205,7 @@ function calcularNivel() {
   mostrarNivel.textContent = Math.round(miNivel);
 
   mostrarTablero(cantidadMostrar, coleccion, conImagen)
-
-  return [puntosCarta, cantidadMostrar];
+  puntosCartaActual=puntosCarta
 }
 
 // boton JUGAR / COMPROBAR RESULTADO /  PISTA -->
