@@ -14,21 +14,30 @@ let coleccionInput = document.querySelectorAll('#coleccionInput')
 let imagenInput = document.querySelector('#imagenInput')
 let btnEmpezarJugar = document.querySelector('#btnEmpezarJugar')
 let conImagen = document.getElementById("imagenInput") //.checked; // devuelve (true o false) según esté marcado o no
+let botonReiniciar = document.getElementById("reiniciarJuego")
 
 //pulsar boton MAS --> FUNCIONA
 function fnButMas() {
   let dondeSumo = document.getElementById("numCantidad");
   let valorDondeSumo = parseInt(dondeSumo.textContent);
+  let botonSumar = document.getElementById('butMenos')
+  let botonRestar = document.getElementById('butMas')
+
+  botonRestar.disabled=false
 
   if (valorDondeSumo === 600){
     let boton = document.getElementById('butMenos')
     boton.disabled = true
   }
+  let nuevaSuma
   if (valorDondeSumo < 600) {
-    let nuevaSuma = valorDondeSumo + 64;
+    nuevaSuma = valorDondeSumo + 64;
     dondeSumo.textContent = nuevaSuma;
   }
 
+  if (nuevaSuma === 600){
+    botonSumar.disabled=true
+  }
   //generarCartas(arrPokemons);
   calcularNivel();
 }
@@ -37,15 +46,18 @@ function fnButMas() {
 function fnButMenos() {
   let dondeResto = document.getElementById("numCantidad");
   let valorDondeResto = parseInt(dondeResto.textContent);
+  let botonSumar = document.getElementById('butMenos')
+  let botonRestar = document.getElementById('butMas')
 
-  if (valorDondeResto === 24){
-    let boton = document.getElementById('butMas')
-    boton.disabled = true
+  botonSumar.disabled = false
+  let nuevaResta
+  if (valorDondeResto > 24) {
+    nuevaResta = valorDondeResto - 64;
+    dondeResto.textContent = nuevaResta;
   }
 
-  if (valorDondeResto > 24) {
-    let nuevaResta = valorDondeResto - 64;
-    dondeResto.textContent = nuevaResta;
+  if(nuevaResta === 24){
+    botonRestar.disabled = true
   }
 
   calcularNivel();
@@ -196,7 +208,7 @@ function calcularNivel() {
 
   let totalPuntosCarta = puntosCarta * cantidadMostrar;
   let totalPuntosCarta100 = 0;
-  totalPuntosCarta100 = totalPuntosCarta * 100;
+  totalPuntosCarta100 = totalPuntosCarta * 1000;
 
   let miNivel = 0;
   miNivel = totalPuntosCarta100 / 25800;
@@ -212,6 +224,15 @@ function calcularNivel() {
 function opcionesBoton() {
   let esteBoton = document.getElementById("btnEmpezarJugar");
   let texto = esteBoton.textContent.trim();
+  let divOpcionesJuego = document.getElementById('opcionesJuego')
+  let divNivelJuego = document.getElementById('nivelJuego')
+  let divJugando = document.getElementById('nivelJuego')
+
+  botonReiniciar.classList.remove('noSee')
+  divOpcionesJuego.classList.add('noSee')
+  divNivelJuego.style.border = 'none';
+
+  divJugando.classList.add('jugando')
 
   if (texto === "JUGAR") {
     fnJugar();
@@ -242,11 +263,14 @@ let mostrarImagen = Boolean
     pokemonsMostrar =[...aleatorizarArray(pokemonsMostrar)]
     
   } else {  //entre todas las cartas
-    
     pokemonsMostrar =[...aleatorizarArray(pokemonsMostrar)]
-    let inicio = numeroAleatorio (0, pokemons.length - intCantidadMostrar)
-    pokemonsMostrar = pokemonsMostrar.slice(inicio, intCantidadMostrar)
 
+    let resta = pokemonsMostrar.length - intCantidadMostrar
+
+    let inicio = numeroAleatorio (0, resta)
+
+    pokemonsMostrar = pokemonsMostrar.slice(inicio, inicio + intCantidadMostrar)
+   
   }
 
   if (conImagen){    //vienen sin imagen
@@ -323,19 +347,8 @@ function aleatorizarArray(arr) {
 }
 
 function numeroAleatorio(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+  return Math.floor(Math.random() * (max - min) + min);
 }
-
-function par(num) {
-  let resultado = num % 2;
-
-  if (resultado === 0) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
 
 
 function alCargar() {
@@ -353,8 +366,44 @@ function fnImagen(){
  
 }
 
+function fnReiniciarJuego(){
+  let botonJugar = document.getElementById('btnEmpezarJugar')
+  let elCantidad = document.getElementById('numCantidad')
+  let elIndicadorNivel = document.getElementById('indicadorNivel')
+  let elImagenInput = document.getElementById('imagenInput')
+  let elColecion = document.getElementById('coleccionInput')
+  let botonMenos = document.getElementById('butMas')
+  let botonMas = document.getElementById('butMenos')
+  let elTipos = document.getElementById('tipes')
+  let elNivelJuegoEtiqueta = document.getElementById('nivelJuegoEtiqueta')
+  let elNivelJuegoEtiqueta2 = document.getElementById('nivelJuegoEtiqueta2')
+  let elOpcionesJuego = document.getElementById('opcionesJuego')
+  let divNivelJuego = document.getElementById('nivelJuego')
+  let divJugando = document.getElementById('nivelJuego')
+
+  botonJugar.textContent = 'JUGAR'
+  elCantidad.textContent = 600
+  elIndicadorNivel.textContent = 535
+  elImagenInput.checked = false
+  elColecion.checked = true
+  botonMenos.disabled = false
+  botonMas.disabled = true
+  elTipos.classList.add('noSee')
+  botonReiniciar.classList.add('noSee')
+  elNivelJuegoEtiqueta.textContent = 'Nivel'
+  elNivelJuegoEtiqueta2.textContent = '/1000'
+  elOpcionesJuego.classList.remove('noSee')
+  divNivelJuego.style.borderLeft ='2px solid black';
+  divJugando.classList.remove('jugando')
+
+
+
+  generarCartas(pokemons)
+}
+
 botonMas.addEventListener('click', fnButMenos)
 botonMenos.addEventListener('click', fnButMas)
+
 for (const item of coleccionInput) {
   item.addEventListener('change', calcularNivel)
 }
@@ -363,5 +412,6 @@ conImagen.addEventListener('change', fnImagen())
 
 imagenInput.addEventListener('click', fnImagen)
 btnEmpezarJugar.addEventListener('click', opcionesBoton)
+botonReiniciar.addEventListener('click', fnReiniciarJuego)
 
 onload = alCargar();
