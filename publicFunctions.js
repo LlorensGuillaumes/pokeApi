@@ -77,10 +77,10 @@ export let generarCartas = (misPokemon, conImagen=true) => {   //Si conImagen es
         pokeName.textContent = name;
 
       let pokeHeight = document.createElement("p");
-        pokeHeight.textContent = "Altura: " + heightPokemon + " m";
+        pokeHeight.textContent = "Altura: " + heightPokemon/10 + " m";
 
       let pokeWeight = document.createElement("p");
-        pokeWeight.textContent = "Peso: " + peso + " Kg";
+        pokeWeight.textContent = "Peso: " + peso/10 + " Kg";
 
       let pokeTipe = document.createElement("p");
         pokeTipe.textContent = "Tipo: " + espType;

@@ -13,16 +13,43 @@
   </head>
 
   <body>
+    <div id="divLogin">
+      <a 
+      href="#"
+      id="logear">
+        log In
+      </a>
+
+      <input 
+      type="text"
+      class="login"
+      id="userInput"
+      placeholder="usuario">
+
+      <input 
+      type="password"
+      class="login"
+      placeholder="contraseña">
+
+      <h5
+      id="helloTu"
+      class="noSee"
+      >below user</h5>
+    </div>
     <div class="container">
       <h1 id="tituloPagina">Pokedex</h1>
       <div id="intrucciones">
+
         <h5 class="instruccionesCont" id="tituloJuego">
           ORGANIZA TUS POKÉMON
         </h5>
-        <p class="instruccionesCont" id="textoInstrucciones">
+        <button
+        id="btInstrucciones">¿cómo se juega?
+      </button>
+        <p class="instruccionesCont noSee" id="textoInstrucciones">
           Pon todos los POKÉMON con su tipo. Los que tienen más de un tipo, funcionará con cualquiera de ellos. Cuidado no te equivoques!!
         </p>
-        <p class="instruccionesCont" id="textoInstrucciones2">
+        <p class="instruccionesCont noSee" id="textoInstrucciones2">
           Cada vez que necesites una pista, tu puntuación bajará un 10%
         </p>
       </div>
@@ -86,7 +113,7 @@
             </div>
           </div>
           <div id="opcionesDeImagen">
-            <h3>¿TE ATREVES SIN VER LAS IMÁGENES?</h3>
+            <h3 class="sinImagenTitulo">¿TE ATREVES SIN VER LAS IMÁGENES?</h3>
             <label id="imagenLabel">
               <input
               
@@ -145,8 +172,8 @@
         value=""
         ></meter>
     </div>
-
-     <div id="tipes" style="height: 600px; overflow: scroll"></div>
+    <!-- <div id="tipes" style="height: 100vh; overflow: scroll"></div> -->
+     <div id="tipes"></div>
     </div>
   </body>
 </html>

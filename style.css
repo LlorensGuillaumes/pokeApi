@@ -9,9 +9,15 @@
 }
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: rgb(26, 67, 137);
+
+background-color: #e2e0e7;
+
+  font-family: Geneva;
+
+
+  /* background-color: #486B5C; */
   font-family: rubik;
-  color: white;
+  color: black;
 }
 #jugar {
   display: flex;
@@ -21,6 +27,7 @@ h1 {
   text-transform: uppercase;
   text-align: center;
   font-size: 40px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 nav ul {
   display: flex;
@@ -52,7 +59,23 @@ nav ul li {
   align-items: center;
   background-color: #bcbbc2;
   border-radius: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  
+  /* font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+
 }
+
+.divCard h3{
+
+  font-size: 25px;
+}
+
+.divCard h2{
+  font-size: 15px;
+}
+
 .imagenes {
   width: 100%;
   height: 100%;
@@ -70,7 +93,7 @@ nav ul li {
   margin-bottom: 7px;
 }
 .caracteristicas p {
-  font-size: 14px;
+  font-size: 12px;
   color: chocolate;
   font-weight: bold;
 }
@@ -80,12 +103,35 @@ nav ul li {
 #tipes {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: flex-start;
   width: 20%;
   height: 50px;
   position: sticky;
   top: 10px;
   scroll-behavior: auto;
+}
+
+#tipes::-webkit-scrollbar{
+  -webkit-appearance: none;
+
+}
+#tipes::-webkit-scrollbar{
+  width: 10px;
+}
+
+#tipes::-webkit-scrollbar-button,#tipes::-webkit-scrollbar-button{
+  display: none;
+}
+
+#tipes::-webkit-scrollbar:horizontal{
+  height: 10px;
+}
+
+#tipes::-webkit-scrollbar-thumb{
+  background-color: red;
+  border-radius: 20px;
+  border: 2px black;
 }
 #imagenTipoPokemon {
   display: flex;
@@ -109,13 +155,15 @@ nav ul li {
   display: flex;
   justify-content: center;
 }
-#instrucciones {
+#intrucciones {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 .instruccionesCont {
   text-align: center;
+  
 }
 #imagenTipo {
   width: 80%;
@@ -133,21 +181,32 @@ nav ul li {
 }
 #butMas {
   display: flex;
-  width: 25px;
-  height: 25px;
+  width: 60px;
+  height: 30px;
   justify-content: center;
   align-items: center;
   font-size: 25px;
   font-weight: bold;
+  background-color: rgb(23, 107, 233);
+  border-radius: 5px;
+  color: chocolate;
+
+}
+
+.sinImagenTitulo{
+  text-align: center;
 }
 #butMenos {
   display: flex;
-  width: 25px;
-  height: 25px;
+  width: 60px;
+  height: 30px;
   justify-content: center;
   align-items: center;
   font-size: 25px;
   font-weight: bold;
+  background-color:rgb(23, 107, 233);
+  border-radius: 5px;
+  color: chocolate;
 }
 #imagenLabel {
   display: flex;
@@ -190,9 +249,19 @@ h2{
 }
 #contenedor2 {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   width: 100%;
 }
+@media (min-width:450px) {
+  #contenedor2{
+    flex-direction: row;
+  }
+  
+}
+
+
 #opcionesCantidad {
   display: flex;
   flex-direction: column;
@@ -223,12 +292,30 @@ h2{
   justify-content: center;
   align-items: center;
   width: 50%;
-  border-left: 2px solid black;
+  /* border-left: 2px solid black; */
 }
 
-.jugando{
+#jugando{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+}
+#btInstrucciones{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 25px;
+  width: 200px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  
+
+}
+
+#btInstrucciones:hover{
+  cursor:pointer
 }
 /* .centrarContenedor{
   display: flex;
@@ -241,7 +328,14 @@ h2{
   height: 60px;
   font-size: 25px;
   font-weight: bold;
-  background-color: rgb(255, 230, 0);
+  color: chocolate;
+  background-color: rgb(23, 107, 233);
+  border: none;
+  border-radius: 7px;
+
+}
+.botoncitos:hover{
+  cursor:pointer
 }
 #opcionesDeColeccion {
   display: flex;
@@ -295,19 +389,23 @@ h2{
 }
 #tituloJuego {
   font-size: 40px;
-  color: yellow;
+  color: black;
 }
 #textoInstrucciones {
-  color: yellow;
+  color: rgb(23, 107, 233);
   font-size: 25px;
 }
 #textoInstrucciones2 {
-  color: yellow;
+  color: red;
   font-size: 20px;
+  font-weight: bold;
   margin-bottom: 25px;
 }
+#intrucciones{
+  width: 80%;
+}
 #tituloPagina {
-  color: yellow;
+  color: black;
   font-size: 60px;
 }
 #barraProgreso{
@@ -334,4 +432,25 @@ meter{
   display: flex;
   flex-direction: column; 
   align-items: center;
+}
+#divLogin{
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 15px;
+  padding-top: 5px;
+  padding-right: 10px;
+}
+.login{
+  display: flex;
+  width: 120px;
+  margin-left: 5px;
+}
+#logear{
+  color: black;
+  padding-right: 15px;
+}
+#helloTu{
+  color: rgb(27, 218, 27);
+  font-size: 20px;
+  margin-right: 15px;
 }
