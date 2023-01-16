@@ -57,6 +57,10 @@ export let generarCartas = (misPokemon, conImagen=true) => {   //Si conImagen es
         }
       
       let espType 
+
+      // let containerImagen = document.getElementById('poKefoto')
+      // containerImagen.classList.add('mobile')
+
             for (const type of types) {
               
               //traduzco los tipos a español
@@ -111,6 +115,8 @@ export let generarCartas = (misPokemon, conImagen=true) => {   //Si conImagen es
 
 
       divCard.appendChild(divCaracteristicas);
+
+      // containerImagen.appendChild(divCaracteristicas)
 
       containerPokemons.appendChild(divCard);    
       let divJugar = document.getElementById("jugar");
